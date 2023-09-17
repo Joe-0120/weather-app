@@ -1,0 +1,36 @@
+<%- include("partials/header.ejs") %>
+<body>
+  <header
+    class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom"
+  >
+    <a
+      href="/"
+      class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
+    >
+      <img class="bi me-2" width="40" height="32" src="images/logo.svg" alt="logo">
+      <span class="fs-4">My Weather App</span>
+    </a>
+  </header>
+  <div class="container">
+    <div class="row"><h1>Current Weather</h1></div>
+    <hr>
+    <div class="row">
+        <div col-12><p><%= data.weather[0].main%> (<%= data.weather[0].description %>)</p></div>
+        <hr>
+        <div class="col-sm-6 col-12 info" >
+          <img src="images/thermometer.svg" alt="Thermometer">
+          <p>Temperature: <%= Math.round(data.main.temp - 273.15)%>° (<%= Math.round(data.main.temp_min - 273.15)%>°/<%= Math.round(data.main.temp_max - 273.15)%>°)</p></div>
+        <div class="col-sm-6 col-12 info">
+          <img src="images/thermometer-sun.svg" alt="Thermometer">
+          <p>Real Feel: <%= Math.round(data.main.feels_like - 273.15)%>°</p></div>
+        <div class="col-sm-6 col-12 info">
+          <img src="images/droplet.svg" alt="Droplet">
+          <p>Humidity: <%= data.main.humidity %>%</p></div>
+        <div class="col-sm-6 col-12 info">
+          <img src="images/wind.svg" alt="Droplet">
+          <p>Wind Speed: <%= data.wind.speed %>km/h</p></div>
+
+    </div>
+  </div>
+  <%- include("partials/footer.ejs") %>
+</body>
